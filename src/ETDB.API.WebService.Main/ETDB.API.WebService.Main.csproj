@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.2.0" />
+    <PackageReference Include="ETDB.API.ServiceBase.Generics" Version="1.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ETDB.API.WebService.Domain\ETDB.API.WebService.Domain.csproj" />
+    <ProjectReference Include="..\ETDB.API.WebService.Misc\ETDB.API.WebService.Misc.csproj" />
+    <ProjectReference Include="..\ETDB.API.WebService.Presentation\ETDB.API.WebService.Presentation.csproj" />
+  </ItemGroup>
+
+</Project>

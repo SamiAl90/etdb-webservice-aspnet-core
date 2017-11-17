@@ -5,13 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ETDB.API.ServiceBase.Generics" Version="1.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EntertainmentDatabase.REST.API.WebService.Domain\EntertainmentDatabase.REST.API.WebService.Domain.csproj" />
+    <ProjectReference Include="..\ETDB.API.WebService.Domain\ETDB.API.WebService.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

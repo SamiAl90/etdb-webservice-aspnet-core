@@ -1,31 +1,37 @@
-﻿using System.Linq;
-using EntertainmentDatabase.REST.API.WebService.Data.Configuration;
+﻿using System;
+using System.Linq;
+using ETDB.API.WebService.Data.Configuration;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace EntertainmentDatabase.REST.API.WebService.Data
+namespace ETDB.API.WebService.Data
 {
-    public class EntertainmentDatabaseWebServiceContext : DbContext
+    public class WebServiceContext : DbContext
     {
+        private readonly IConfigurationRoot configurationRoot;
         private const string Production = "Production";
         private const string Development = "Development";
-        private readonly IConfigurationRoot configurationRoot;
-        private readonly IHostingEnvironment hostingEnvironment;
 
-        public EntertainmentDatabaseWebServiceContext(IConfigurationRoot configurationRoot, IHostingEnvironment hostingEnvironment)
+        public WebServiceContext(IConfigurationRoot configurationRoot)
         {
             this.configurationRoot = configurationRoot;
-            this.hostingEnvironment = hostingEnvironment;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer(
-                this.hostingEnvironment.IsDevelopment()
-                    ? this.configurationRoot.GetConnectionString(EntertainmentDatabaseWebServiceContext.Development)
-                    : this.configurationRoot.GetConnectionString(EntertainmentDatabaseWebServiceContext.Production));
+
+            var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ??
+                                  WebServiceContext.Development;
+
+            optionsBuilder.UseSqlServer(environmentName
+                .Equals(WebServiceContext.Development, StringComparison.OrdinalIgnoreCase)
+                ? this.configurationRoot.GetConnectionString(WebServiceContext.Development)
+                : environmentName
+                    .Equals(WebServiceContext.Production, StringComparison.OrdinalIgnoreCase)
+                    ? this.configurationRoot.GetConnectionString(WebServiceContext.Production)
+                    : throw new ArgumentException(nameof(environmentName)));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

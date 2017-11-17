@@ -1,7 +1,7 @@
 ﻿using System;
-using EntertainmentDatabase.REST.API.WebService.Domain.Enums;
+using ETDB.API.WebService.Domain.Enums;
 
-namespace EntertainmentDatabase.REST.API.WebService.Domain.Base
+namespace ETDB.API.WebService.Domain.Base
 {
     public interface IConsumerMedia
     {

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace EntertainmentDatabase.REST.API.WebService.Bootstrap
+namespace ETDB.API.WebService.Bootstrap
 {
     public class Program
     {

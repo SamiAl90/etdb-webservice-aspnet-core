@@ -1,8 +1,8 @@
-﻿using EntertainmentDatabase.REST.API.WebService.Misc.Exceptions;
+﻿using ETDB.API.WebService.Misc.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace EntertainmentDatabase.REST.API.WebService.Misc.Filters
+namespace ETDB.API.WebService.Misc.Filters
 {
     public class RessourceNotFoundExceptionFilter : IExceptionFilter
     {

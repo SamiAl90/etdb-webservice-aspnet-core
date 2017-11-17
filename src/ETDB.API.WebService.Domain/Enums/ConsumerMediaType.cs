@@ -1,4 +1,4 @@
-﻿namespace EntertainmentDatabase.REST.API.WebService.Domain.Enums
+﻿namespace ETDB.API.WebService.Domain.Enums
 {
     public enum ConsumerMediaType
     {

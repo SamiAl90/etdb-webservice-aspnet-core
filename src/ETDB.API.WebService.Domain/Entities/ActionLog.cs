@@ -1,7 +1,7 @@
 ﻿using System;
-using EntertainmentDatabase.REST.API.WebService.Domain.Base;
+using ETDB.API.WebService.Domain.Base;
 
-namespace EntertainmentDatabase.REST.API.WebService.Domain.Entities
+namespace ETDB.API.WebService.Domain.Entities
 {
     public class ActionLog : ILogInfo
     {

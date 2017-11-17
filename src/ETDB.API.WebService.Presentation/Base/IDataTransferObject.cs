@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EntertainmentDatabase.REST.API.WebService.Presentation.Base
+namespace ETDB.API.WebService.Presentation.Base
 {
     public interface IDataTransferObject
     {

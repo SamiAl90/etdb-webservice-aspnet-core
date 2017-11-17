@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EntertainmentDatabase.REST.API.WebService.Misc.Exceptions
+namespace ETDB.API.WebService.Misc.Exceptions
 {
     public class RessourceNotFoundException : Exception
     {

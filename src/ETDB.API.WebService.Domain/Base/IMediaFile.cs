@@ -1,7 +1,7 @@
-﻿using EntertainmentDatabase.REST.API.ServiceBase.Generics.Base;
-using EntertainmentDatabase.REST.API.WebService.Domain.Enums;
+﻿using ETDB.API.ServiceBase.Generics.Base;
+using ETDB.API.WebService.Domain.Enums;
 
-namespace EntertainmentDatabase.REST.API.WebService.Domain.Base
+namespace ETDB.API.WebService.Domain.Base
 {
     public interface IMediaFile : IEntity
     {

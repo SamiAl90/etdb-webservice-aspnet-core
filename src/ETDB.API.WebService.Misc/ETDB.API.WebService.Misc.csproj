@@ -9,8 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EntertainmentDatabase.REST.API.ServiceBase.Generics\EntertainmentDatabase.REST.API.ServiceBase.Generics.csproj" />
-    <ProjectReference Include="..\EntertainmentDatabase.REST.API.WebService.Domain\EntertainmentDatabase.REST.API.WebService.Domain.csproj" />
+    <ProjectReference Include="..\ETDB.API.WebService.Domain\ETDB.API.WebService.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

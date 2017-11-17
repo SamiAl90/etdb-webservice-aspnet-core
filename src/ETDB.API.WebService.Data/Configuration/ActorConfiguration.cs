@@ -1,17 +1,15 @@
-﻿using EntertainmentDatabase.REST.API.ServiceBase.Generics.Base;
-using EntertainmentDatabase.REST.API.WebService.Domain.Entities;
+﻿using ETDB.API.ServiceBase.Generics.Base;
+using ETDB.API.WebService.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace EntertainmentDatabase.REST.API.WebService.Data.Configuration
+namespace ETDB.API.WebService.Data.Configuration
 {
     internal class ActorConfiguration : EntityMappingConfiguration<Actor>
     {
         protected override void Configure(EntityTypeBuilder<Actor> builder)
         {
             base.Configure(builder);
-
-            //builder.ToTable($"{nameof(Actor)}s");
 
             builder.Property(actor => actor.Name)
                 .HasMaxLength(128)

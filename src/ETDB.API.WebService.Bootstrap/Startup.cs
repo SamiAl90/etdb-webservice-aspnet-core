@@ -2,7 +2,9 @@
 using System.Reflection;
 using Autofac;
 using AutoMapper;
-using EntertainmentDatabase.REST.API.ServiceBase.Builder;
+using ETDB.API.ServiceBase.Builder;
+using ETDB.API.WebService.Data;
+using ETDB.API.WebService.Misc.Filters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -16,10 +18,8 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Serilog;
 using Swashbuckle.AspNetCore.Swagger;
-using EntertainmentDatabase.REST.API.WebService.Data;
-using EntertainmentDatabase.REST.API.WebService.Misc.Filters;
 
-namespace EntertainmentDatabase.REST.API.WebService.Bootstrap
+namespace ETDB.API.WebService.Bootstrap
 {
     public class Startup
     {
@@ -82,7 +82,7 @@ namespace EntertainmentDatabase.REST.API.WebService.Bootstrap
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             });
 
-            services.AddDbContext<EntertainmentDatabaseWebServiceContext>()
+            services.AddDbContext<WebServiceContext>()
                 .AddEntityFrameworkSqlServer();
 
             services.AddCors(options =>
@@ -135,7 +135,7 @@ namespace EntertainmentDatabase.REST.API.WebService.Bootstrap
         public void ConfigureContainer(ContainerBuilder builder)
         {
             new ServiceContainerBuilder(builder)
-                .UseGenericRepositoryPattern<EntertainmentDatabaseWebServiceContext>()
+                .UseGenericRepositoryPattern<WebServiceContext>()
                 .UseEnvironment(this.environment)
                 .UseConfiguration(this.configurationRoot)
                 .RegisterTypeAsSingleton<HttpContextAccessor, IHttpContextAccessor>();

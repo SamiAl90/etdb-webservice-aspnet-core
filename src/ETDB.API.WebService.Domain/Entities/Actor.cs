@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using EntertainmentDatabase.REST.API.ServiceBase.Generics.Base;
+using ETDB.API.ServiceBase.Generics.Base;
 
-namespace EntertainmentDatabase.REST.API.WebService.Domain.Entities
+namespace ETDB.API.WebService.Domain.Entities
 {
     public class Actor : IEntity
     {

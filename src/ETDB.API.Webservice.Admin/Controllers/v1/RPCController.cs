@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace EntertainmentDatabase.REST.API.WebService.Admin.Controllers.v1
+namespace ETDB.API.WebService.Admin.Controllers.v1
 {
     [Route("api/admin/v1/[controller]")]
     public class RPCController : Controller

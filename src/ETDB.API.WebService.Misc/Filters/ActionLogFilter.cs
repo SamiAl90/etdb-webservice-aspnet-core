@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
-using EntertainmentDatabase.REST.API.ServiceBase.Generics.Base;
-using EntertainmentDatabase.REST.API.WebService.Domain.Entities;
+using ETDB.API.ServiceBase.Generics.Base;
+using ETDB.API.WebService.Domain.Entities;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace EntertainmentDatabase.REST.API.WebService.Misc.Filters
+namespace ETDB.API.WebService.Misc.Filters
 {
     public class ActionLogFilter : IActionFilter, IDisposable
     {

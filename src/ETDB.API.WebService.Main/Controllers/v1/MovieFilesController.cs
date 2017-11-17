@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using EntertainmentDatabase.REST.API.ServiceBase.Generics.Base;
-using EntertainmentDatabase.REST.API.WebService.Domain.Entities;
-using EntertainmentDatabase.REST.API.WebService.Presentation.DataTransferObjects;
+using ETDB.API.ServiceBase.Generics.Base;
+using ETDB.API.WebService.Domain.Entities;
+using ETDB.API.WebService.Presentation.DataTransferObjects;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Net.Http.Headers;
 
-namespace EntertainmentDatabase.REST.API.WebService.Main.Controllers.v1
+namespace ETDB.API.WebService.Main.Controllers.v1
 {
     [Route("api/main/v1/movies/{movieId:Guid}/[controller]")]
     public class MovieFilesController : Controller

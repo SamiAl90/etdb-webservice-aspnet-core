@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.0" />
+    <PackageReference Include="ETDB.API.ServiceBase" Version="1.0.0" />
     <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="2.1.0" />
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.0.0" />
@@ -27,10 +28,9 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EntertainmentDatabase.REST.API.ServiceBase\EntertainmentDatabase.REST.API.ServiceBase.csproj" />
-    <ProjectReference Include="..\EntertainmentDatabase.REST.API.WebService.Data\EntertainmentDatabase.REST.API.WebService.Data.csproj" />
-    <ProjectReference Include="..\EntertainmentDatabase.REST.API.WebService.Main\EntertainmentDatabase.REST.API.WebService.Main.csproj" />
-    <ProjectReference Include="..\EntertainmentDatabase.REST.API.WebService.Misc\EntertainmentDatabase.REST.API.WebService.Misc.csproj" />
+    <ProjectReference Include="..\ETDB.API.WebService.Data\ETDB.API.WebService.Data.csproj" />
+    <ProjectReference Include="..\ETDB.API.WebService.Main\ETDB.API.WebService.Main.csproj" />
+    <ProjectReference Include="..\ETDB.API.WebService.Misc\ETDB.API.WebService.Misc.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Content Update="Properties\launchSettings.json">

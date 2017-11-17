@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EntertainmentDatabase.REST.API.ServiceBase.Generics\EntertainmentDatabase.REST.API.ServiceBase.Generics.csproj" />
+    <PackageReference Include="ETDB.API.ServiceBase.Generics" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,8 +1,8 @@
 ﻿using System;
-using EntertainmentDatabase.REST.API.WebService.Domain.Base;
-using EntertainmentDatabase.REST.API.WebService.Domain.Enums;
+using ETDB.API.WebService.Domain.Base;
+using ETDB.API.WebService.Domain.Enums;
 
-namespace EntertainmentDatabase.REST.API.WebService.Domain.Entities
+namespace ETDB.API.WebService.Domain.Entities
 {
     public class MovieCoverImage : IMediaFile
     {

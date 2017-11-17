@@ -1,4 +1,4 @@
-﻿namespace EntertainmentDatabase.REST.API.WebService.Presentation.DataTransferObjects
+﻿namespace ETDB.API.WebService.Presentation.DataTransferObjects
 {
     public class LoginUserDTO
     {

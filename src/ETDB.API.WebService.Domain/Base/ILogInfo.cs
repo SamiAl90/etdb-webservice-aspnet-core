@@ -1,6 +1,6 @@
-﻿using EntertainmentDatabase.REST.API.ServiceBase.Generics.Base;
+﻿using ETDB.API.ServiceBase.Generics.Base;
 
-namespace EntertainmentDatabase.REST.API.WebService.Domain.Base
+namespace ETDB.API.WebService.Domain.Base
 {
     public interface ILogInfo : IEntity
     {

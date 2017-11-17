@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using EntertainmentDatabase.REST.API.WebService.Domain.Entities;
+using ETDB.API.WebService.Domain.Entities;
 using Microsoft.AspNetCore.Http;
 
-namespace EntertainmentDatabase.REST.API.WebService.Presentation.DataTransferObjects.Resolver
+namespace ETDB.API.WebService.Presentation.DataTransferObjects.Resolver
 {
     public class MovieCoverImageResolver : IValueResolver<Movie, MovieDTO, string>
     {

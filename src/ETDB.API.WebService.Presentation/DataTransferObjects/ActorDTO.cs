@@ -1,7 +1,7 @@
 ﻿using System;
-using EntertainmentDatabase.REST.API.WebService.Presentation.Base;
+using ETDB.API.WebService.Presentation.Base;
 
-namespace EntertainmentDatabase.REST.API.WebService.Presentation.DataTransferObjects
+namespace ETDB.API.WebService.Presentation.DataTransferObjects
 {
     public class ActorDTO : IDataTransferObject
     {
