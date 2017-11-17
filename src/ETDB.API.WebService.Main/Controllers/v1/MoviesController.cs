@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EntertainmentDatabase.REST.API.WebService.Main.Controllers.v1
 {
-    [Authorize]
     [Route("api/main/v1/[controller]")]
     public class MoviesController
     {
