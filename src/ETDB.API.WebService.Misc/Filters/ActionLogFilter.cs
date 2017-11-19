@@ -20,8 +20,8 @@ namespace ETDB.API.WebService.Misc.Filters
 
         public void OnActionExecuting(ActionExecutingContext context)
         {
-            traceStart = DateTime.UtcNow;
-            stopwatch.Start();
+            this.traceStart = DateTime.UtcNow;
+            this.stopwatch.Start();
         }
 
         public void OnActionExecuted(ActionExecutedContext context)

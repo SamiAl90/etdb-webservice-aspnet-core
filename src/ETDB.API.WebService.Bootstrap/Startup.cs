@@ -3,12 +3,15 @@ using System.Reflection;
 using Autofac;
 using AutoMapper;
 using ETDB.API.ServiceBase.Builder;
+using ETDB.API.ServiceBase.Constants;
 using ETDB.API.WebService.Data;
 using ETDB.API.WebService.Misc.Filters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc.Cors.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,12 +33,20 @@ namespace ETDB.API.WebService.Bootstrap
         private readonly string logPath = $"Logs/{Assembly.GetEntryAssembly().GetName().Name}.log";
         private const string SeqPath = "http://localhost:5341";
 
+        private const string SwaggerDocDescription = "ETDB " + ServiceNames.WebService + " V1";
+        private const string SwaggerDocVersion = "v1";
+        private const string SwaggerDocJsonUri = "/swagger/v1/swagger.json";
+
+        private const string AssemblyPrefix = "ETDB.API.WebService";
+
+        private const string AuthenticationSchema = "Bearer";
+
         public Startup(IHostingEnvironment environment)
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(environment.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{environment.EnvironmentName}.json", optional: true)
+                .AddJsonFile("appsettings.json", true, true)
+                .AddJsonFile($"appsettings.{environment.EnvironmentName}.json", true)
                 .AddEnvironmentVariables();
             this.configurationRoot = builder.Build();
 
@@ -56,19 +67,19 @@ namespace ETDB.API.WebService.Bootstrap
 
             services.AddSwaggerGen(options =>
             {
-                options.SwaggerDoc("v1", new Info
+                options.SwaggerDoc(Startup.SwaggerDocVersion, new Info
                 {
-                    Title = "Entertainment-Database-REST",
-                    Version = "v1"
+                    Title = Startup.SwaggerDocDescription,
+                    Version = Startup.SwaggerDocVersion
                 });
             });
 
-            services.AddAuthentication("Bearer")
+            services.AddAuthentication(Startup.AuthenticationSchema)
                 .AddIdentityServerAuthentication(options =>
                 {
                     options.Authority = "http://localhost:5000";
                     options.RequireHttpsMetadata = false;
-                    options.ApiName = "EntertainmentDatabase.REST.API.WebService";
+                    options.ApiName = ServiceNames.WebService;
                 });
 
             services.AddMvc(options =>
@@ -76,6 +87,10 @@ namespace ETDB.API.WebService.Bootstrap
                 options.Filters.Add(typeof(RessourceNotFoundExceptionFilter));
                 options.Filters.Add(typeof(ActionLogFilter));
                 options.Filters.Add(typeof(ErrorLogFilter));
+
+                options.Filters.Add(
+                    new AuthorizeFilter(new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build()));
+
             }).AddJsonOptions(options =>
             {
                 options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
@@ -96,13 +111,14 @@ namespace ETDB.API.WebService.Bootstrap
                 });
             });
 
-            services.Configure<MvcOptions>(options => options.Filters.Add(new CorsAuthorizationFilterFactory(Startup.CorsName)));
+            services.Configure<MvcOptions>(options => 
+                options.Filters.Add(new CorsAuthorizationFilterFactory(Startup.CorsName)));
 
             services.AddAutoMapper(DependencyContext
                 .Default
                 .CompileLibraries
                 .SelectMany(lib => lib.Assemblies)
-                .Where(assemblyName => assemblyName.StartsWith("EntertainmentDatabase.REST.API"))
+                .Where(assemblyName => assemblyName.StartsWith(Startup.AssemblyPrefix))
                 .Select(assemblyName => Assembly.Load(assemblyName.Replace(".dll", ""))));
         }
 
@@ -124,7 +140,7 @@ namespace ETDB.API.WebService.Bootstrap
             app.UseSwagger();
             app.UseSwaggerUI(action =>
             {
-                action.SwaggerEndpoint("/swagger/v1/swagger.json", "Entertainment-Database-REST V1");
+                action.SwaggerEndpoint(Startup.SwaggerDocJsonUri, Startup.SwaggerDocDescription);
             });
 
             app.UseAuthentication();

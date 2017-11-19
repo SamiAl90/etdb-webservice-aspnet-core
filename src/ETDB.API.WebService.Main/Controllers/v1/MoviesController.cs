@@ -2,26 +2,34 @@
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
+using ETDB.API.ServiceBase.Constants;
 using ETDB.API.ServiceBase.Generics.Base;
 using ETDB.API.WebService.Domain.Entities;
 using ETDB.API.WebService.Misc.Exceptions;
 using ETDB.API.WebService.Presentation.DataTransferObjects;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ETDB.API.WebService.Main.Controllers.v1
 {
+    [AllowAnonymous]
     [Route("api/main/v1/[controller]")]
     public class MoviesController
     {
         private readonly IMapper mapper;
         private readonly IEntityRepository<Movie> movieRepository;
+        private readonly IHttpContextAccessor httpContextAccessor;
 
-        public MoviesController(IMapper mapper, IEntityRepository<Movie> movieRepository)
+        public MoviesController(IMapper mapper, IEntityRepository<Movie> movieRepository, 
+            IHttpContextAccessor httpContextAccessor)
         {
             this.mapper = mapper;
             this.movieRepository = movieRepository;
+            this.httpContextAccessor = httpContextAccessor;
         }
 
+        [Authorize(Roles = RoleNames.Admin)]
         [HttpGet]
         public IEnumerable<MovieDTO> GetAll()
         {

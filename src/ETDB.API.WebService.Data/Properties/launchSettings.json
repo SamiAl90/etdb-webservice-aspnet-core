@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ETDB.API.WebService.Data": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

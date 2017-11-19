@@ -5,9 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="6.2.0" />
-    <PackageReference Include="ETDB.API.ServiceBase.Generics" Version="1.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.0" />
+    <PackageReference Include="AutoMapper" Version="6.2.1" />
+    <PackageReference Include="ETDB.API.ServiceBase.Constants" Version="1.0.1" />
+    <PackageReference Include="ETDB.API.ServiceBase.Generics" Version="1.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.1" />
   </ItemGroup>
 
   <ItemGroup>

@@ -5,11 +5,13 @@ using AutoMapper;
 using ETDB.API.ServiceBase.Generics.Base;
 using ETDB.API.WebService.Domain.Entities;
 using ETDB.API.WebService.Presentation.DataTransferObjects;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Net.Http.Headers;
 
 namespace ETDB.API.WebService.Main.Controllers.v1
 {
+    [AllowAnonymous]
     [Route("api/main/v1/movies/{movieId:Guid}/[controller]")]
     public class MovieFilesController : Controller
     {
